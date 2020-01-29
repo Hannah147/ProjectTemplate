@@ -10,7 +10,7 @@ namespace ProjectTemplate
     {
         public string MovieName { get; set; }
         public string MovieGenre { get; set; }
-        public string MovieDescription { get; set; }
+        public string MovieDescription { get; set; } 
 
         public Movies(string movieName, string movieGenre, string movieDescription)
         {
