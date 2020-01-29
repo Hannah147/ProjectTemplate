@@ -33,15 +33,7 @@ namespace ProjectTemplate
             string movieGenre = cbxGenre.SelectedItem.ToString();
             string movieDescription = tbxDescription.Text;
 
-            /*Movies[] MoviesAll = new Movies[100];
-
-            for (int counter = 0; counter < 5; counter++)
-            {
-                MoviesAll[counter] = new Movies(movieName, movieGenre, movieDescription);
-                AllMovies.Add(MoviesAll[counter]);
-            }*/
-
-            Movies movie1 = new Movies(movieName, movieGenre, movieDescription);
+            Movies movie1 = new Movies(movieName, movieGenre, movieDescription, "");
 
             AllMovies.Add(movie1);
 
@@ -73,10 +65,21 @@ namespace ProjectTemplate
 
             if(selectedMovie != null)
             {
+                /*string movieName = tbxMovieName.Text;
+                string movieGenre = cbxGenre.SelectedItem.ToString();
+                string movieDescription = tbxDescription.Text;
+                string movieRating = cbxGenre.SelectedItem.ToString();
+
+                MoviesWatched movieWatched = new MoviesWatched(movieName, movieGenre, movieDescription, movieRating);
+
+                WatchedMovies.Add(movieWatched);*/
+
+                lbxWatched.ItemsSource = null;
+                lbxWatched.ItemsSource = WatchedMovies;
                 AllMovies.Remove(selectedMovie);
                 WatchedMovies.Add(selectedMovie);
 
-               
+                //string movieRating = cbxAddRating.SelectedItem.ToString();
                 RefreshScreen();
             }
         }
@@ -96,6 +99,15 @@ namespace ProjectTemplate
             if(selectMovie != null)
             {
                 tblkDescription.Text = selectMovie.MovieDescription;
+            }
+        }
+
+        private void lbxWatched_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Movies selectMovie = lbxWatched.SelectedItem as Movies;
+            if (selectMovie != null)
+            {
+                tblkDescription.Text = selectMovie.MovieRating;
             }
         }
     }
