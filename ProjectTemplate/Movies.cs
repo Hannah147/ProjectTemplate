@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTemplate
 {
-    class Movies
+    public class Movies
     {
         public string MovieName { get; set; }
         public string MovieGenre { get; set; }
@@ -22,6 +22,20 @@ namespace ProjectTemplate
         public override string ToString()
         {
             return $"{MovieName}";
+        }
+    }
+
+    public class MoviesWatched : Movies
+    {
+        public MoviesWatched(string movieName, string movieGenre, string movieDescription) : base(movieName, movieGenre, movieDescription)
+        {
+
+        }
+        public string MovieRating { get; set; }
+
+        public override string ToString()
+        {
+            return (this.MovieName + " - " + MovieRating);
         }
     }
 }

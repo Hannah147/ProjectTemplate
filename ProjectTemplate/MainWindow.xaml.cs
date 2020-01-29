@@ -45,6 +45,7 @@ namespace ProjectTemplate
 
             AllMovies.Add(movie1);
 
+            lbxWatchlist.ItemsSource = null;
             lbxWatchlist.ItemsSource = AllMovies;
 
             tbxMovieName.Clear();
@@ -59,6 +60,11 @@ namespace ProjectTemplate
 
             cbxGenreSort.ItemsSource = Genres;
             cbxGenreSort.SelectedIndex = 0;
+
+            string[] Ratings = { "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars" };
+            cbxAddRating.ItemsSource = Ratings;
+
+            cbxRatingFilter.ItemsSource = Ratings;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -70,6 +76,7 @@ namespace ProjectTemplate
                 AllMovies.Remove(selectedMovie);
                 WatchedMovies.Add(selectedMovie);
 
+               
                 RefreshScreen();
             }
         }
