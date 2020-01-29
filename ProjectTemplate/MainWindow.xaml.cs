@@ -32,6 +32,7 @@ namespace ProjectTemplate
             string movieName = tbxMovieName.Text;
             string movieGenre = cbxGenre.SelectedItem.ToString();
             string movieDescription = tbxDescription.Text;
+            //string movieRating = cbxAddRating.SelectedItem.ToString();
 
             Movies movie1 = new Movies(movieName, movieGenre, movieDescription, "");
 
@@ -74,13 +75,18 @@ namespace ProjectTemplate
 
                 WatchedMovies.Add(movieWatched);*/
 
-                lbxWatched.ItemsSource = null;
-                lbxWatched.ItemsSource = WatchedMovies;
-                AllMovies.Remove(selectedMovie);
-                WatchedMovies.Add(selectedMovie);
+                if (cbxAddRating.SelectedItem != null)
+                {
+                    selectedMovie.MovieRating = cbxAddRating.SelectedItem.ToString();
 
-                //string movieRating = cbxAddRating.SelectedItem.ToString();
-                RefreshScreen();
+                    lbxWatched.ItemsSource = null;
+                    lbxWatched.ItemsSource = WatchedMovies;
+                    AllMovies.Remove(selectedMovie);
+                    WatchedMovies.Add(selectedMovie);
+
+                    //string movieRating = cbxAddRating.SelectedItem.ToString();
+                    RefreshScreen();
+                }
             }
         }
 
@@ -107,7 +113,7 @@ namespace ProjectTemplate
             Movies selectMovie = lbxWatched.SelectedItem as Movies;
             if (selectMovie != null)
             {
-                tblkDescription.Text = selectMovie.MovieRating;
+                tblkRating.Text = selectMovie.MovieRating;
             }
         }
     }
