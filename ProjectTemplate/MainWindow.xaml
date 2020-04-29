@@ -31,16 +31,52 @@
                 <ListBox x:Name="lbxWatchlist" HorizontalAlignment="Left" Height="191" Margin="30,112,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="lbxWatchlist_SelectionChanged"/>
                 <Label Content="Description" HorizontalAlignment="Left" Margin="30,310,0,0" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblkDescription" HorizontalAlignment="Left" Margin="30,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196" Height="51"/>
-                <Label x:Name="lbl" Content="Rating" HorizontalAlignment="Left" Margin="371,158,0,0" VerticalAlignment="Top" Width="54" FontSize="15"/>
-                <ComboBox x:Name="cbxAddRating" HorizontalAlignment="Left" Margin="354,193,0,0" VerticalAlignment="Top" Width="96"/>
-                <Button x:Name="btnAdd" Content="&gt;&gt; Add &gt;&gt;" HorizontalAlignment="Left" Margin="354,242,0,0" VerticalAlignment="Top" Width="96" Click="btnAdd_Click"/>
+                <Label x:Name="lbl" Content="Rating" HorizontalAlignment="Left" Margin="376,101,0,0" VerticalAlignment="Top" Width="54" FontSize="15"/>
+                <ComboBox x:Name="cbxAddRating" HorizontalAlignment="Left" Margin="354,136,0,0" VerticalAlignment="Top" Width="105"/>
+                <Button x:Name="btnAdd" Content="&gt;&gt; Add &gt;&gt;" HorizontalAlignment="Left" Margin="357,283,0,0" VerticalAlignment="Top" Width="102" Click="btnAdd_Click"/>
                 <Label x:Name="lblWatched" Content="Watched" HorizontalAlignment="Left" Margin="570,0,0,0" VerticalAlignment="Top" Width="142" Height="49" FontSize="30"/>
                 <Label Content="Rating" HorizontalAlignment="Left" Margin="570,58,0,0" VerticalAlignment="Top" FontSize="18"/>
                 <ComboBox x:Name="cbxRatingFilter" HorizontalAlignment="Left" Margin="646,66,0,0" VerticalAlignment="Top" Width="120" Height="26" SelectionChanged="CbxRatingFilter_SelectionChanged"/>
-                <ListBox x:Name="lbxWatched" HorizontalAlignment="Left" Height="191" Margin="570,112,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="lbxWatched_SelectionChanged"/>
-                <Label Content="Rating" HorizontalAlignment="Left" Margin="570,310,0,0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tblkRating" HorizontalAlignment="Left" Margin="570,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Height="51"/>
+                <ListBox x:Name="lbxWatched" HorizontalAlignment="Left" Height="224" Margin="570,112,0,0" VerticalAlignment="Top" Width="196"/>
+                <Label x:Name="lbl_Copy" Content="Date Watched" HorizontalAlignment="Left" Margin="354,181,0,0" VerticalAlignment="Top" Width="105" FontSize="15"/>
+                <DatePicker x:Name="DPDateWatched" HorizontalAlignment="Left" Margin="357,216,0,0" VerticalAlignment="Top"/>
 
+            </Grid>
+        </TabItem>
+
+        <TabItem Name="AllWatched" Header="Watched Movies" Width="100">
+            <Grid Margin="0,-6,0,6">
+                <Label x:Name="lblWatchedInfo" Content="Watched Movies" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Width="231" Height="49" FontSize="30"/>
+                <ListBox x:Name="lbxWatchedAll" HorizontalAlignment="Left" Height="269" Margin="30,112,0,0" VerticalAlignment="Top" Width="231" SelectionChanged="LbxWatchedAll_SelectionChanged"/>
+                <Label x:Name="lblGenreList" Content="Genre" HorizontalAlignment="Left" Margin="30,58,0,0" VerticalAlignment="Top" FontSize="18"/>
+                <ComboBox x:Name="cbxFilterGenre" HorizontalAlignment="Left" Margin="110,66,0,0" VerticalAlignment="Top" Width="151" Height="26"/>
+                <Label x:Name="lblMovieNameList" Content="Movie Name" HorizontalAlignment="Left" Margin="430,60,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkMovieList" HorizontalAlignment="Left" Margin="440,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="336"/>
+                <Label x:Name="lblMovieGenreList" Content="Movie Genre" HorizontalAlignment="Left" Margin="430,127,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkMovieGenre" HorizontalAlignment="Left" Margin="440,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="336"/>
+                <Label x:Name="lblMovieDescriptionList" Content="Movie Description" HorizontalAlignment="Left" Margin="430,195,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkMovieDescription" HorizontalAlignment="Left" Margin="440,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="336"/>
+                <Label x:Name="lblMovieRatingList" Content="Movie Rating" HorizontalAlignment="Left" Margin="430,262,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkMovieRating" HorizontalAlignment="Left" Margin="440,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="336"/>
+                <Label x:Name="lblMovieDateWatchedList" Content="Date Movie Watched" HorizontalAlignment="Left" Margin="430,324,0,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkMovieDate" HorizontalAlignment="Left" Margin="440,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="336"/>
+
+                <!--<Label x:Name="lblMovieName" Content="Movie Name" HorizontalAlignment="Left" Margin="30,54,0,0" VerticalAlignment="Top" Width="162"/>
+                <TextBox x:Name="tbxMovieName" HorizontalAlignment="Left" Height="24" Margin="28,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
+                <Label x:Name="lblMovieGenre" Content="Movie Genre" HorizontalAlignment="Left" Margin="28,124,0,0" VerticalAlignment="Top" Width="162"/>
+                <ComboBox x:Name="cbxGenre" HorizontalAlignment="Left" Margin="28,155,0,0" VerticalAlignment="Top" Width="160"/>
+                <Label x:Name="lblMovieDesc" Content="Movie Description" HorizontalAlignment="Left" Margin="30,201,0,0" VerticalAlignment="Top" Width="162"/>
+                <TextBox x:Name="tbxDescription" HorizontalAlignment="Left" Height="71" Margin="30,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
+                <Button x:Name="btnAddWatch" Content="Add to Watchlist" HorizontalAlignment="Left" Margin="32,322,0,0" VerticalAlignment="Top" Width="160" Click="btnAddWatch_Click"/>-->
+            </Grid>
+        </TabItem>
+
+        <TabItem Name="RandomMovie" Header="Random Movie" Width="100">
+            <Grid>
+                <Label x:Name="lblRandomMovieHeader" Content="Random Movie Selector" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Width="350" Height="50" FontSize="30"/>
+                <Label Name="lblRandomMovie" Content="Select Random Movie from Watchlist:" Margin="30,55,456,291" FontSize="15" Width="300"/>
+                <Button x:Name="btnSelectRandom" Content="Random Movie" Width="160" Click="BtnSelectRandom_Click" HorizontalAlignment="Left" Margin="30,105,0,250"/>
+                <TextBlock x:Name="tblkMovieInfo" Margin="30,170,456,23" Height="200" Width="500"></TextBlock>
             </Grid>
         </TabItem>
 

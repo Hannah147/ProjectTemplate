@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WatchedMovies.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WatchedMoviesStoreContainer">
+    <EntitySet Name="WatchedMovies" EntityType="WatchedMovies.Store.WatchedMovies" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="WatchedMovies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MovieName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MovieGenre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MovieDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MovieRating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateWatched" Type="datetime" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="WatchedMovies" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="WatchedMoviesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WatchedMovies" EntityType="WatchedMovies.WatchedMovies" />
+        </EntityContainer>
+        <EntityType Name="WatchedMovies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MovieName" Type="String" Nullable="false" />
+          <Property Name="MovieGenre" Type="String" Nullable="false" />
+          <Property Name="MovieDescription" Type="String" Nullable="false" />
+          <Property Name="MovieRating" Type="String" Nullable="false" />
+          <Property Name="DateWatched" Type="DateTime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WatchedMoviesStoreContainer" CdmEntityContainer="WatchedMoviesContainer">
+    <EntitySetMapping Name="WatchedMovies">
+      <EntityTypeMapping TypeName="IsTypeOf(WatchedMovies.WatchedMovies)">
+        <MappingFragment StoreEntitySet="WatchedMovies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+          <ScalarProperty Name="MovieGenre" ColumnName="MovieGenre" />
+          <ScalarProperty Name="MovieDescription" ColumnName="MovieDescription" />
+          <ScalarProperty Name="MovieRating" ColumnName="MovieRating" />
+          <ScalarProperty Name="DateWatched" ColumnName="DateWatched" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
