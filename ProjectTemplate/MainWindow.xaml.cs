@@ -199,12 +199,18 @@ namespace ProjectTemplate
                         lbxWatchlist.ItemsSource = AllMovies;
                         counter = 2;
                     }
+                    
 
                     //else if (movie.MovieGenre != selectedGenre)
                     //{
                     //    //MessageBox.Show("There are no movies of this genre");
                     //    counter = 3;
                     //}
+                }
+
+                if(FilterWatchlist.Count == 0)
+                {
+                    lbxWatchlist.ItemsSource = null;
                 }
 
                 if (counter == 1)
@@ -370,7 +376,12 @@ namespace ProjectTemplate
                     }
                 }
 
-                if(counter == 1)
+                if (FilterWatched.Count == 0)
+                {
+                    lbxWatched.ItemsSource = null;
+                }
+
+                if (counter == 1)
                 {
                     lbxWatched.ItemsSource = null;
                     lbxWatched.ItemsSource = FilterWatched;
@@ -381,8 +392,10 @@ namespace ProjectTemplate
                     lbxWatched.ItemsSource = null;
                     lbxWatched.ItemsSource = WatchedMovies;
                 }
+
             }
 
+            
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error sorting by genre" + ex.Message);
@@ -529,6 +542,11 @@ namespace ProjectTemplate
                         lbxWatchedAll.ItemsSource = WatchedMovies;
                         counter = 2;
                     }
+                }
+
+                if (FilterAllWatched.Count == 0)
+                {
+                    lbxWatchedAll.ItemsSource = null;
                 }
 
                 if (counter == 1)
