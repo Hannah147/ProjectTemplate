@@ -27,6 +27,9 @@ namespace ProjectTemplate
         List<WatchedMovies> WatchedMovies = new List<WatchedMovies>();
         List<WatchedMovies> FilterWatchlist = new List<WatchedMovies>();
         List<WatchedMovies> FilterWatched = new List<WatchedMovies>();
+        List<WatchedMovies> FilterAllWatched = new List<WatchedMovies>();
+
+        //static WatchedMovies[] FilteredWatchlist = new WatchedMovies[10];
 
         WatchedMoviesContainer db = new WatchedMoviesContainer();
         Random rng = new Random();
@@ -78,6 +81,9 @@ namespace ProjectTemplate
                 cbxGenreSort.ItemsSource = Genres;
                 cbxGenreSort.SelectedIndex = 0;
 
+                cbxFilterGenre.ItemsSource = Genres;
+                cbxFilterGenre.SelectedIndex = 0;
+
                 string[] Ratings = { "Select...", "1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars" };
                 cbxAddRating.ItemsSource = Ratings;
                 cbxAddRating.SelectedIndex = 0;
@@ -116,6 +122,10 @@ namespace ProjectTemplate
 
                         RefreshScreen();
 
+                        FilterWatchlist.Remove(selectedMovie);
+                        lbxWatchlist.ItemsSource = null;
+                        lbxWatchlist.ItemsSource = FilterWatchlist;
+
                         tblkDescription.Text = "";
                         cbxAddRating.SelectedIndex = 0;
                         DPDateWatched.SelectedDate = null;
@@ -137,8 +147,8 @@ namespace ProjectTemplate
         // Refresh the screen after movie is moved from watchlist to watched
         private void RefreshScreen()
         {
-            lbxWatchlist.ItemsSource = null;
-            lbxWatchlist.ItemsSource = AllMovies;
+            //lbxWatchlist.ItemsSource = null;
+            //lbxWatchlist.ItemsSource = AllMovies;
 
             lbxWatched.ItemsSource = null;
             lbxWatched.ItemsSource = WatchedMovies;
@@ -192,7 +202,7 @@ namespace ProjectTemplate
 
                     //else if (movie.MovieGenre != selectedGenre)
                     //{
-                    //    MessageBox.Show("There are no movies of this genre");
+                    //    //MessageBox.Show("There are no movies of this genre");
                     //    counter = 3;
                     //}
                 }
@@ -204,7 +214,7 @@ namespace ProjectTemplate
                     lbxWatchlist.ItemsSource = FilterWatchlist;
                 }
 
-                else if(counter == 2)
+                else if (counter == 2)
                 {
                     lbxWatchlist.ItemsSource = null;
                     lbxWatchlist.ItemsSource = AllMovies;
@@ -216,6 +226,113 @@ namespace ProjectTemplate
                 //    lbxWatchlist.ItemsSource = null;
                 //}
 
+                //string selectedGenre = cbxGenreSort.SelectedItem as string;
+                //int counter = 0;
+
+                //switch(selectedGenre)
+                //{
+                //    case "Select...":
+                //        //FilterWatchlist.Clear();
+                //        lbxWatchlist.ItemsSource = AllMovies;
+                //        break;
+
+                //    case "Horror":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == "Horror")
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+
+                //    case "Comedy":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == "Comedy")
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+
+                //    case "Action":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == "Action")
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+
+                //    case "Romance":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == "Romance")
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+
+                //    case "Superhero":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == "Superhero")
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+
+                //    case "Drama":
+                //        //FilterWatchlist.Clear();
+                //        foreach (WatchedMovies movie in AllMovies)
+                //        {
+                //            //FilterWatchlist.Clear();
+                //            if (movie.MovieGenre == selectedGenre)
+                //            {
+                //                //FilterWatchlist.Add(movie);
+                //                FilteredWatchlist[counter] = movie;
+                //                counter++;
+                //            }
+                //        }
+
+                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
+                //        break;
+                //}
 
             }
 
@@ -232,22 +349,37 @@ namespace ProjectTemplate
             try
             {
                 string selectedRating = cbxRatingFilter.SelectedItem as string;
+                int counter = 0;
+
+                FilterWatched.Clear();
 
                 foreach (WatchedMovies movie in WatchedMovies)
                 {
                     if (movie.MovieRating == selectedRating)
                     {
-                        FilterWatched.Clear();
                         FilterWatched.Add(movie);
-                        lbxWatched.ItemsSource = null;
-                        lbxWatched.ItemsSource = FilterWatched;
+                        counter = 1;
 
                     }
 
-                    else if (movie.MovieRating != selectedRating)
+                    else if (movie.MovieRating == "Select...")
                     {
-                        lbxWatched.ItemsSource = null;
+                        FilterWatched.Clear();
+                        lbxWatched.ItemsSource = WatchedMovies;
+                        counter = 2;
                     }
+                }
+
+                if(counter == 1)
+                {
+                    lbxWatched.ItemsSource = null;
+                    lbxWatched.ItemsSource = FilterWatched;
+                }
+                
+                else if(counter == 2)
+                {
+                    lbxWatched.ItemsSource = null;
+                    lbxWatched.ItemsSource = WatchedMovies;
                 }
             }
 
@@ -371,6 +503,51 @@ namespace ProjectTemplate
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error writing to a JSON File" + ex.Message);
+
+            }
+        }
+
+        private void CbxFilterGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                int counter = 0;
+
+                string selectedGenre = cbxFilterGenre.SelectedItem as string;
+                FilterAllWatched.Clear();
+
+                foreach (WatchedMovies movie in WatchedMovies)
+                {
+                    if (movie.MovieGenre == selectedGenre)
+                    {
+                        FilterAllWatched.Add(movie);
+                        counter = 1;
+                    }
+                    else if (selectedGenre == "Select...")
+                    {
+                        FilterAllWatched.Clear();
+                        lbxWatchedAll.ItemsSource = WatchedMovies;
+                        counter = 2;
+                    }
+                }
+
+                if (counter == 1)
+                {
+                    // Set the source after the foreach after the list has been filled
+                    lbxWatchedAll.ItemsSource = null;
+                    lbxWatchedAll.ItemsSource = FilterAllWatched;
+                }
+
+                else if (counter == 2)
+                {
+                    lbxWatchedAll.ItemsSource = null;
+                    lbxWatchedAll.ItemsSource = WatchedMovies;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error sorting by genre" + ex.Message);
 
             }
         }

@@ -58,7 +58,7 @@
                 <Label x:Name="lblWatchedInfo" Content="Watched Movies" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Top" Width="231" Height="49" FontSize="30"/>
                 <ListBox x:Name="lbxWatchedAll" HorizontalAlignment="Left" Height="269" Margin="30,112,0,0" VerticalAlignment="Top" Width="231" SelectionChanged="LbxWatchedAll_SelectionChanged"/>
                 <Label x:Name="lblGenreList" Content="Genre" HorizontalAlignment="Left" Margin="30,58,0,0" VerticalAlignment="Top" FontSize="18"/>
-                <ComboBox x:Name="cbxFilterGenre" HorizontalAlignment="Left" Margin="110,66,0,0" VerticalAlignment="Top" Width="151" Height="26"/>
+                <ComboBox x:Name="cbxFilterGenre" HorizontalAlignment="Left" Margin="110,66,0,0" VerticalAlignment="Top" Width="151" Height="26" SelectionChanged="CbxFilterGenre_SelectionChanged"/>
                 <Label x:Name="lblMovieNameList" Content="Movie Name" HorizontalAlignment="Left" Margin="430,60,0,0" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblkMovieList" HorizontalAlignment="Left" Margin="440,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="336"/>
                 <Label x:Name="lblMovieGenreList" Content="Movie Genre" HorizontalAlignment="Left" Margin="430,127,0,0" VerticalAlignment="Top"/>
