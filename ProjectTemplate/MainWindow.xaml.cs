@@ -29,8 +29,6 @@ namespace ProjectTemplate
         List<WatchedMovies> FilterWatched = new List<WatchedMovies>();
         List<WatchedMovies> FilterAllWatched = new List<WatchedMovies>();
 
-        //static WatchedMovies[] FilteredWatchlist = new WatchedMovies[10];
-
         WatchedMoviesContainer db = new WatchedMoviesContainer();
         Random rng = new Random();
 
@@ -44,26 +42,26 @@ namespace ProjectTemplate
         {
             try
             {
-                    string movieName = tbxMovieName.Text;
-                    string movieGenre = cbxGenre.SelectedItem.ToString();
-                    string movieDescription = tbxDescription.Text;
+                string movieName = tbxMovieName.Text;
+                string movieGenre = cbxGenre.SelectedItem.ToString();
+                string movieDescription = tbxDescription.Text;
 
-                    WatchedMovies movie1 = new WatchedMovies(movieName, movieGenre, movieDescription, "", DateTime.MinValue);
+                WatchedMovies movie1 = new WatchedMovies(movieName, movieGenre, movieDescription, "", DateTime.MinValue);
 
-                    AllMovies.Add(movie1);
+                AllMovies.Add(movie1);
 
-                    lbxWatchlist.ItemsSource = null;
-                    lbxWatchlist.ItemsSource = AllMovies;
+                lbxWatchlist.ItemsSource = null;
+                lbxWatchlist.ItemsSource = AllMovies;
 
-                    tbxMovieName.Clear();
-                    tbxDescription.Clear();
-                    cbxGenre.SelectedIndex = 0;
+                tbxMovieName.Clear();
+                tbxDescription.Clear();
+                cbxGenre.SelectedIndex = 0;
 
                 imgGenre.Source = null;
                 tblkGenreHeading.Text = "";
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("A handled exception just occured" + ex.Message);
             }
@@ -92,7 +90,7 @@ namespace ProjectTemplate
                 cbxRatingFilter.SelectedIndex = 0;
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("There was an error loading the window" + ex.Message);
 
@@ -103,8 +101,8 @@ namespace ProjectTemplate
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
-            WatchedMovies selectedMovie = lbxWatchlist.SelectedItem as WatchedMovies;
+            {
+                WatchedMovies selectedMovie = lbxWatchlist.SelectedItem as WatchedMovies;
 
                 if (selectedMovie != null)
                 {
@@ -147,9 +145,6 @@ namespace ProjectTemplate
         // Refresh the screen after movie is moved from watchlist to watched
         private void RefreshScreen()
         {
-            //lbxWatchlist.ItemsSource = null;
-            //lbxWatchlist.ItemsSource = AllMovies;
-
             lbxWatched.ItemsSource = null;
             lbxWatched.ItemsSource = WatchedMovies;
 
@@ -199,21 +194,14 @@ namespace ProjectTemplate
                         lbxWatchlist.ItemsSource = AllMovies;
                         counter = 2;
                     }
-                    
-
-                    //else if (movie.MovieGenre != selectedGenre)
-                    //{
-                    //    //MessageBox.Show("There are no movies of this genre");
-                    //    counter = 3;
-                    //}
                 }
 
-                if(FilterWatchlist.Count == 0)
+                if (FilterWatchlist.Count == 0)
                 {
                     lbxWatchlist.ItemsSource = null;
                 }
 
-                if (counter == 1)
+                else if (counter == 1)
                 {
                     // Set the source after the foreach after the list has been filled
                     lbxWatchlist.ItemsSource = null;
@@ -225,121 +213,6 @@ namespace ProjectTemplate
                     lbxWatchlist.ItemsSource = null;
                     lbxWatchlist.ItemsSource = AllMovies;
                 }
-
-                //else if(counter == 3)
-                //{
-                //    MessageBox.Show("There are no movies of this genre");
-                //    lbxWatchlist.ItemsSource = null;
-                //}
-
-                //string selectedGenre = cbxGenreSort.SelectedItem as string;
-                //int counter = 0;
-
-                //switch(selectedGenre)
-                //{
-                //    case "Select...":
-                //        //FilterWatchlist.Clear();
-                //        lbxWatchlist.ItemsSource = AllMovies;
-                //        break;
-
-                //    case "Horror":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == "Horror")
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-
-                //    case "Comedy":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == "Comedy")
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-
-                //    case "Action":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == "Action")
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-
-                //    case "Romance":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == "Romance")
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-
-                //    case "Superhero":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == "Superhero")
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-
-                //    case "Drama":
-                //        //FilterWatchlist.Clear();
-                //        foreach (WatchedMovies movie in AllMovies)
-                //        {
-                //            //FilterWatchlist.Clear();
-                //            if (movie.MovieGenre == selectedGenre)
-                //            {
-                //                //FilterWatchlist.Add(movie);
-                //                FilteredWatchlist[counter] = movie;
-                //                counter++;
-                //            }
-                //        }
-
-                //        lbxWatchlist.ItemsSource = FilteredWatchlist;
-                //        break;
-                //}
-
             }
 
             catch (Exception ex)
@@ -381,21 +254,19 @@ namespace ProjectTemplate
                     lbxWatched.ItemsSource = null;
                 }
 
-                if (counter == 1)
+                else if (counter == 1)
                 {
                     lbxWatched.ItemsSource = null;
                     lbxWatched.ItemsSource = FilterWatched;
                 }
-                
-                else if(counter == 2)
+
+                else if (counter == 2)
                 {
                     lbxWatched.ItemsSource = null;
                     lbxWatched.ItemsSource = WatchedMovies;
                 }
-
             }
 
-            
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error sorting by genre" + ex.Message);
@@ -403,6 +274,7 @@ namespace ProjectTemplate
             }
         }
 
+        // Choosing from a list of all watched movies, and displaying info on selected movie
         private void LbxWatchedAll_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -423,6 +295,7 @@ namespace ProjectTemplate
             }
         }
 
+        // On click of button, a random movie from watchlist is displayed
         private void BtnSelectRandom_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -438,50 +311,42 @@ namespace ProjectTemplate
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error selecting a random movie from the watchlist" + ex.Message);
-
             }
         }
 
+        // When genre is selected on add movie page, a picture for the genre is displayed
         private void CbxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 string selectedGenre = cbxGenre.SelectedItem as string;
 
-                if (selectedGenre == "Horror")
+                switch(selectedGenre)
                 {
-                    tblkGenreHeading.Text = "Horror Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Horror.jpg", UriKind.Relative));
-                }
-
-                else if (selectedGenre == "Comedy")
-                {
-                    tblkGenreHeading.Text = "Comedy Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Comedy.jpg", UriKind.Relative));
-                }
-
-                else if (selectedGenre == "Action")
-                {
-                    tblkGenreHeading.Text = "Action Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Action.jpg", UriKind.Relative));
-                }
-
-                else if (selectedGenre == "Romance")
-                {
-                    tblkGenreHeading.Text = "Romance Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Romance.jpg", UriKind.Relative));
-                }
-
-                else if (selectedGenre == "Superhero")
-                {
-                    tblkGenreHeading.Text = "Superhero Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Superhero.jpg", UriKind.Relative));
-                }
-
-                else if (selectedGenre == "Drama")
-                {
-                    tblkGenreHeading.Text = "Drama Movie";
-                    imgGenre.Source = new BitmapImage(new Uri($"/images/Drama.jpg", UriKind.Relative));
+                    case "Horror":
+                        tblkGenreHeading.Text = "A Horror?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Horror.jpg", UriKind.Relative));
+                        break;
+                    case "Comedy":
+                        tblkGenreHeading.Text = "A Comedy?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Comedy.jpg", UriKind.Relative));
+                        break;
+                    case "Action":
+                        tblkGenreHeading.Text = "An Action Movie?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Action.jpg", UriKind.Relative));
+                        break;
+                    case "Romance":
+                        tblkGenreHeading.Text = "A Romance Movie?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Romance.jpg", UriKind.Relative));
+                        break;
+                    case "Superhero":
+                        tblkGenreHeading.Text = "A Superhero Movie?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Superhero.jpg", UriKind.Relative));
+                        break;
+                    case "Drama":
+                        tblkGenreHeading.Text = "A Drama?";
+                        imgGenre.Source = new BitmapImage(new Uri($"/images/Drama.jpg", UriKind.Relative));
+                        break;
                 }
             }
 
@@ -492,6 +357,7 @@ namespace ProjectTemplate
             }
         }
 
+        // Add 2 JSON Files when the window is closed, with a list of the unwatched movies, and watched movies
         private void Window_Closed(object sender, EventArgs e)
         {
             try
@@ -520,6 +386,7 @@ namespace ProjectTemplate
             }
         }
 
+        // Filter by genre on all of the watched movies, and display info on the movie
         private void CbxFilterGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
